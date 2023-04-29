@@ -14,7 +14,11 @@ You can install the package via composer:
 composer require ajaycalicut17/laravel-trash
 ```
 
-## Publishing the file
+Run the migrations to create the tables for this package:
+
+```php
+php artisan migrate
+```
 
 Publishing the config file is optional:
 
