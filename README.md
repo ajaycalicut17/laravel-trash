@@ -14,6 +14,14 @@ You can install the package via composer:
 composer require ajaycalicut17/laravel-trash
 ```
 
+## Publishing the file
+
+Publishing the config file is optional:
+
+```php
+php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
+```
+
 ## Usage
 
 ```php
