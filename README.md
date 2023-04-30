@@ -14,10 +14,28 @@ You can install the package via composer:
 composer require ajaycalicut17/laravel-trash
 ```
 
+## Usage
+
 Run the migrations to create the tables for this package:
 
 ```php
 php artisan migrate
+```
+
+Check model is "soft delete" able, laravel-trash work by using "soft delete" functionality:
+
+```php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use SoftDeletes;
+}
 ```
 
 To enable trash for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the model:
@@ -101,12 +119,6 @@ Publishing the config file is optional:
 
 ```php
 php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
-```
-
-## Usage
-
-```php
-// Usage description here
 ```
 
 ### Testing
