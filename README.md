@@ -22,7 +22,7 @@ Run the migrations to create the tables for this package:
 php artisan migrate
 ```
 
-Check model is "soft delete" able, laravel-trash work by using "soft delete" functionality:
+Check model is "soft delete" able, this package work by using "soft delete" functionality:
 
 ```php
 <?php
@@ -38,7 +38,7 @@ class User extends Authenticatable
 }
 ```
 
-To enable trash for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the model:
+To enable this package for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the Eloquent model:
 
 ```php
 <?php
@@ -55,7 +55,7 @@ class User extends Authenticatable
 }
 ```
 
-To start listening to model events, define a $dispatchesEvents property on your Eloquent model:
+To start listening "trashed" model event, define a $dispatchesEvents property on your Eloquent model:
 
 ```php
 <?php
