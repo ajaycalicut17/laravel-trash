@@ -121,6 +121,18 @@ Publishing the config file (Optional):
 php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
 ```
 
+To get all trash data:
+
+```php
+Trash::all();
+```
+
+To get all trash data and associated model data:
+
+```php
+Trash::with('trashable')->get();
+```
+
 ### Testing
 
 ```bash
