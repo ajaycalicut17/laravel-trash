@@ -1,10 +1,10 @@
-# Very short description of the package
+# Laravel Trash
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ajaycalicut17/laravel-trash.svg?style=flat-square)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 [![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash.svg?style=flat-square)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 ![GitHub Actions](https://github.com/ajaycalicut17/laravel-trash/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package use to manage soft deletes. It work by using laravel "soft delete" functionality.
 
 ## Installation
 
@@ -22,48 +22,76 @@ Run the migrations to create the tables for this package:
 php artisan migrate
 ```
 
-Check model is "soft delete" able, this package work by using "soft delete" functionality:
+Check model is "soft delete" able, this package work by using laravel "soft delete" functionality:
 
-```php
+```diff
 <?php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
++ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes;
++    use SoftDeletes;
 }
 ```
 
 To enable this package for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the Eloquent model:
 
-```php
+```diff
 <?php
 
 namespace App\Models;
 
-use Ajaycalicut17\LaravelTrash\Traits\Trashable;
++ use Ajaycalicut17\LaravelTrash\Traits\Trashable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Trashable;
++    use SoftDeletes, Trashable;
 }
 ```
 
 To start listening "trashed" model event, define a $dispatchesEvents property on your Eloquent model:
 
-```php
+```diff
+<?php
+
+namespace App\Models;
+
++ use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
+use Ajaycalicut17\LaravelTrash\Traits\Trashable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use SoftDeletes, Trashable;
++
++    /**
++     * The event map for the model.
++     *
++     * @var array
++     */
++    protected $dispatchesEvents = [
++        'trashed' => ModelTrashed::class,
++    ];
+}
+```
+
+To override the trash name (Optional):
+
+```diff
 <?php
 
 namespace App\Models;
 
 use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
 use Ajaycalicut17\LaravelTrash\Traits\Trashable;
++ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -79,43 +107,15 @@ class User extends Authenticatable
     protected $dispatchesEvents = [
         'trashed' => ModelTrashed::class,
     ];
++
++    public static function trashName(Model $model): string
++    {
++        return static::class . ' ' . $model->id;
++    }
 }
 ```
 
-To override the trash name:
-
-```php
-<?php
-
-namespace App\Models;
-
-use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
-use Ajaycalicut17\LaravelTrash\Traits\Trashable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
-{
-    use SoftDeletes, Trashable;
-
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
-    protected $dispatchesEvents = [
-        'trashed' => ModelTrashed::class,
-    ];
-
-    public static function trashName(Model $model): string
-    {
-        return static::class . ' ' . $model->id;
-    }
-}
-```
-
-Publishing the config file is optional:
+Publishing the config file (Optional):
 
 ```php
 php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
