@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash.svg?style=flat-square)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 ![GitHub Actions](https://github.com/ajaycalicut17/laravel-trash/actions/workflows/main.yml/badge.svg)
 
-This package use to manage soft deletes. It work by using laravel "soft delete" functionality.
+This package is used to handle soft deletes. This is done using Laravel "soft delete" functionality.
 
 ## Installation
 
@@ -16,7 +16,7 @@ composer require ajaycalicut17/laravel-trash
 
 ## Usage
 
-Run the migrations to create the tables for this package:
+Run migrations to create tables for this package:
 
 ```php
 php artisan migrate
