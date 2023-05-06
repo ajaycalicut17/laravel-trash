@@ -3,6 +3,8 @@
 namespace Ajaycalicut17\LaravelTrash\Providers;
 
 use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
+use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
+use Ajaycalicut17\LaravelTrash\Listeners\Restore;
 use Ajaycalicut17\LaravelTrash\Listeners\Trashed;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         ModelTrashed::class => [
             Trashed::class
+        ],
+        RestoreModel::class => [
+            Restore::class
         ],
     ];
 

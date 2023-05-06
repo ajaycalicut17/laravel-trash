@@ -22,7 +22,7 @@ class Trashed
      * @param  \App\Events\ModelTrashed  $event
      * @return void
      */
-    public function handle(ModelTrashed $modelTrashed)
+    public function handle(ModelTrashed $modelTrashed): void
     {
         $modelTrashed->model->trash()->create([
             'name' => $modelTrashed->model::trashName($modelTrashed->model),
