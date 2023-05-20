@@ -139,6 +139,18 @@ To restore associated model form trash:
 Trash::first()->restoreFromTrash();
 ```
 
+To delete trashed model and associated model:
+
+```php
+Trash::first()->deleteFromTrash();
+```
+
+To delete all trashed model and associated model:
+
+```php
+
+```
+
 ### Testing
 
 ```bash
