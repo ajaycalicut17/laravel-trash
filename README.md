@@ -148,7 +148,7 @@ Trash::first()->deleteFromTrash();
 To delete all trashed model and associated model:
 
 ```php
-
+Trash::emptyTrash();
 ```
 
 ### Testing

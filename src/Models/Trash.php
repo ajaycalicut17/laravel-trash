@@ -60,9 +60,9 @@ class Trash extends Model
      *
      * @return $this
      */
-    public function emptyTrash()
+    public static function emptyTrash()
     {
-        return $this->cursor()->each(function ($each) {
+        return static::cursor()->each(function ($each) {
             $each->delete();
         });
     }
