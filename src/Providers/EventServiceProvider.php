@@ -2,8 +2,10 @@
 
 namespace Ajaycalicut17\LaravelTrash\Providers;
 
+use Ajaycalicut17\LaravelTrash\Events\DeleteModel;
 use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
 use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
+use Ajaycalicut17\LaravelTrash\Listeners\Delete;
 use Ajaycalicut17\LaravelTrash\Listeners\Restore;
 use Ajaycalicut17\LaravelTrash\Listeners\Trashed;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -21,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         RestoreModel::class => [
             Restore::class
+        ],
+        DeleteModel::class => [
+            Delete::class
         ],
     ];
 

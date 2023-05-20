@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ModelTrashed
+class DeleteModel
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
-     *
-     * @return void
      */
     public function __construct(public Model $model)
     {
-        // 
+        //
     }
 }
