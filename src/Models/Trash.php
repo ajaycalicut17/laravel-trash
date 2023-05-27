@@ -7,6 +7,7 @@ use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\LazyCollection;
 
 class Trash extends Model
 {
@@ -33,10 +34,8 @@ class Trash extends Model
 
     /**
      * restore associated model form trash.
-     *
-     * @return $this
      */
-    public function restoreFromTrash()
+    public function restoreFromTrash(): Trash
     {
         $this->deleteQuietly();
 
@@ -47,20 +46,16 @@ class Trash extends Model
 
     /**
      * delete trashed model and associated model.
-     *
-     * @return $this
      */
-    public function deleteFromTrash()
+    public function deleteFromTrash(): bool|null
     {
         return $this->delete();
     }
 
     /**
      * delete all trashed model and associated model.
-     *
-     * @return $this
      */
-    public static function emptyTrash()
+    public static function emptyTrash(): LazyCollection
     {
         return static::cursor()->each(function ($each) {
             $each->delete();
