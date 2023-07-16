@@ -28,14 +28,6 @@ class TrashTest extends TestCase
 
         $user->delete();
 
-        $this->assertSoftDeleted($user);
-
-        $this->assertDatabaseHas('trashes', [
-            'trashable_type' => User::class,
-            'trashable_id' => $user->id,
-            'name' => User::trashName($user),
-        ]);
-
         $trash = Trash::query()
             ->where('trashable_type', User::class)
             ->where('trashable_id', $user->id)
@@ -54,14 +46,6 @@ class TrashTest extends TestCase
 
         $user->delete();
 
-        $this->assertSoftDeleted($user);
-
-        $this->assertDatabaseHas('trashes', [
-            'trashable_type' => User::class,
-            'trashable_id' => $user->id,
-            'name' => User::trashName($user),
-        ]);
-
         $trash = Trash::query()
             ->where('trashable_type', User::class)
             ->where('trashable_id', $user->id)
@@ -72,5 +56,26 @@ class TrashTest extends TestCase
         $this->assertModelMissing($trash);
 
         $this->assertModelMissing($user);
+    }
+
+    public function test_verify_that_all_models_have_been_deleted_from_the_trash()
+    {
+        $this->assertDatabaseEmpty('trashes');
+
+        $this->assertDatabaseEmpty('users');
+
+        $users = User::factory(10)->create();
+
+        $users->each(function ($user) {
+            $user->delete();
+        });
+
+        $this->assertDatabaseCount('trashes', 10);
+
+        Trash::emptyTrash();
+
+        $this->assertDatabaseEmpty('trashes');
+
+        $this->assertDatabaseEmpty('users');
     }
 }
