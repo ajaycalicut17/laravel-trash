@@ -47,4 +47,30 @@ class TrashTest extends TestCase
 
         $this->assertNotSoftDeleted($user);
     }
+
+    public function test_check_if_the_model_has_been_deleted_from_the_trash()
+    {
+        $user = User::factory()->create();
+
+        $user->delete();
+
+        $this->assertSoftDeleted($user);
+
+        $this->assertDatabaseHas('trashes', [
+            'trashable_type' => User::class,
+            'trashable_id' => $user->id,
+            'name' => User::trashName($user),
+        ]);
+
+        $trash = Trash::query()
+            ->where('trashable_type', User::class)
+            ->where('trashable_id', $user->id)
+            ->first();
+
+        $trash->deleteFromTrash();
+
+        $this->assertModelMissing($trash);
+
+        $this->assertModelMissing($user);
+    }
 }
