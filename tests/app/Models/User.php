@@ -1,9 +1,9 @@
 <?php
 
-namespace Ajaycalicut17\LaravelTrash\Tests\Models;
+namespace Ajaycalicut17\LaravelTrash\Tests\app\Models;
 
 use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
-use Ajaycalicut17\LaravelTrash\Tests\Factories\UserFactory;
+use Ajaycalicut17\LaravelTrash\Tests\database\factories\UserFactory;
 use Ajaycalicut17\LaravelTrash\Traits\Trashable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

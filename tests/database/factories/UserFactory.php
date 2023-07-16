@@ -1,8 +1,8 @@
 <?php
 
-namespace Ajaycalicut17\LaravelTrash\Tests\Factories;
+namespace Ajaycalicut17\LaravelTrash\Tests\database\factories;
 
-use Ajaycalicut17\LaravelTrash\Tests\Models\User;
+use Ajaycalicut17\LaravelTrash\Tests\app\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
