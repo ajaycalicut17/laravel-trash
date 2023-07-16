@@ -2,7 +2,7 @@
 
 namespace Ajaycalicut17\LaravelTrash\Tests;
 
-use Ajaycalicut17\LaravelTrash\Tests\app\Models\User;
+use Ajaycalicut17\LaravelTrash\Tests\Models\User;
 
 class TrashTest extends TestCase
 {
