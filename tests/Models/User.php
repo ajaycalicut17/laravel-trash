@@ -2,7 +2,7 @@
 
 namespace Ajaycalicut17\LaravelTrash\Tests\Models;
 
-use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
+use Ajaycalicut17\LaravelTrash\Events\MoveToTrash;
 use Ajaycalicut17\LaravelTrash\Tests\Factories\UserFactory;
 use Ajaycalicut17\LaravelTrash\Traits\Trashable;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -47,7 +47,7 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
-        'trashed' => ModelTrashed::class,
+        'trashed' => MoveToTrash::class,
     ];
 
     protected static function newFactory(): Factory

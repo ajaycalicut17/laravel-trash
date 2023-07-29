@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class RestoreModel
+class MoveToTrash
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -16,5 +16,6 @@ class RestoreModel
      */
     public function __construct(public Model $model)
     {
+        // 
     }
 }

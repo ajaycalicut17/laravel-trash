@@ -2,12 +2,12 @@
 
 namespace Ajaycalicut17\LaravelTrash\Providers;
 
-use Ajaycalicut17\LaravelTrash\Events\DeleteModel;
-use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
-use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
-use Ajaycalicut17\LaravelTrash\Listeners\Delete;
-use Ajaycalicut17\LaravelTrash\Listeners\Restore;
-use Ajaycalicut17\LaravelTrash\Listeners\Trashed;
+use Ajaycalicut17\LaravelTrash\Events\DeleteFromTrash;
+use Ajaycalicut17\LaravelTrash\Events\MoveToTrash;
+use Ajaycalicut17\LaravelTrash\Events\RestoreFromTrash;
+use Ajaycalicut17\LaravelTrash\Listeners\DeletedFromTrash;
+use Ajaycalicut17\LaravelTrash\Listeners\RestoredFromTrash;
+use Ajaycalicut17\LaravelTrash\Listeners\MovedToTrash;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -18,14 +18,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        ModelTrashed::class => [
-            Trashed::class
+        MoveToTrash::class => [
+            MovedToTrash::class
         ],
-        RestoreModel::class => [
-            Restore::class
+        RestoreFromTrash::class => [
+            RestoredFromTrash::class
         ],
-        DeleteModel::class => [
-            Delete::class
+        DeleteFromTrash::class => [
+            DeletedFromTrash::class
         ],
     ];
 

@@ -62,7 +62,7 @@ To start listening "trashed" model event, define a $dispatchesEvents property on
 
 namespace App\Models;
 
-+ use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
++ use Ajaycalicut17\LaravelTrash\Events\MoveToTrash;
 use Ajaycalicut17\LaravelTrash\Traits\Trashable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -77,7 +77,7 @@ class User extends Authenticatable
 +     * @var array
 +     */
 +    protected $dispatchesEvents = [
-+        'trashed' => ModelTrashed::class,
++        'trashed' => MoveToTrash::class,
 +    ];
 }
 ```
@@ -89,7 +89,7 @@ To override the trash name (Optional):
 
 namespace App\Models;
 
-use Ajaycalicut17\LaravelTrash\Events\ModelTrashed;
+use Ajaycalicut17\LaravelTrash\Events\MoveToTrash;
 use Ajaycalicut17\LaravelTrash\Traits\Trashable;
 + use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -105,7 +105,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $dispatchesEvents = [
-        'trashed' => ModelTrashed::class,
+        'trashed' => MoveToTrash::class,
     ];
 +
 +    public static function trashName(Model $model): string

@@ -2,9 +2,9 @@
 
 namespace Ajaycalicut17\LaravelTrash\Listeners;
 
-use Ajaycalicut17\LaravelTrash\Events\DeleteModel;
+use Ajaycalicut17\LaravelTrash\Events\DeleteFromTrash;
 
-class Delete
+class DeletedFromTrash
 {
     /**
      * Create the event listener.
@@ -17,8 +17,8 @@ class Delete
     /**
      * Handle the event.
      */
-    public function handle(DeleteModel $event): void
+    public function handle(DeleteFromTrash $deleteFromTrash): void
     {
-        $event->model->trashable()->forceDelete();
+        $deleteFromTrash->model->trashable()->forceDelete();
     }
 }

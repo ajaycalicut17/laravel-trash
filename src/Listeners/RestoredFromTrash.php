@@ -2,9 +2,9 @@
 
 namespace Ajaycalicut17\LaravelTrash\Listeners;
 
-use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
+use Ajaycalicut17\LaravelTrash\Events\RestoreFromTrash;
 
-class Restore
+class RestoredFromTrash
 {
     /**
      * Create the event listener.
@@ -17,8 +17,8 @@ class Restore
     /**
      * Handle the event.
      */
-    public function handle(RestoreModel $event): void
+    public function handle(RestoreFromTrash $restoreFromTrash): void
     {
-        $event->model->trashable()->restore();
+        $restoreFromTrash->model->trashable()->restore();
     }
 }

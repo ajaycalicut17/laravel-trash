@@ -2,8 +2,8 @@
 
 namespace Ajaycalicut17\LaravelTrash\Models;
 
-use Ajaycalicut17\LaravelTrash\Events\DeleteModel;
-use Ajaycalicut17\LaravelTrash\Events\RestoreModel;
+use Ajaycalicut17\LaravelTrash\Events\DeleteFromTrash;
+use Ajaycalicut17\LaravelTrash\Events\RestoreFromTrash;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -23,7 +23,7 @@ class Trash extends Model
      * @var array
      */
     protected $dispatchesEvents = [
-        'deleted' => DeleteModel::class,
+        'deleted' => DeleteFromTrash::class,
     ];
 
     public function trashable(): MorphTo
@@ -39,7 +39,7 @@ class Trash extends Model
     {
         $this->deleteQuietly();
 
-        RestoreModel::dispatch($this);
+        RestoreFromTrash::dispatch($this);
 
         return $this;
     }
