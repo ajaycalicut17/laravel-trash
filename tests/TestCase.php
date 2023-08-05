@@ -27,6 +27,6 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     {
         $this->loadLaravelMigrations();
 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 }

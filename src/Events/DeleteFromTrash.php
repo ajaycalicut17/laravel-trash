@@ -16,6 +16,6 @@ class DeleteFromTrash
      */
     public function __construct(public Model $model)
     {
-        // 
+        //
     }
 }

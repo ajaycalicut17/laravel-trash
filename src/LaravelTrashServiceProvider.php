@@ -15,11 +15,11 @@ class LaravelTrashServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/trash.php' => config_path('trash.php'),
+                __DIR__.'/../config/trash.php' => config_path('trash.php'),
             ], 'config');
         }
     }
@@ -30,7 +30,7 @@ class LaravelTrashServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/trash.php', 'trash');
+        $this->mergeConfigFrom(__DIR__.'/../config/trash.php', 'trash');
 
         // Register the services provider
         $this->app->register(EventServiceProvider::class);

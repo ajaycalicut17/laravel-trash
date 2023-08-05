@@ -16,6 +16,6 @@ class MoveToTrash
      */
     public function __construct(public Model $model)
     {
-        // 
+        //
     }
 }

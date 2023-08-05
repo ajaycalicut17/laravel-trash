@@ -15,6 +15,6 @@ trait Trashable
 
     public static function trashName(Model $model): string
     {
-        return static::class . ' ' . $model->id;
+        return static::class.' '.$model->id;
     }
 }

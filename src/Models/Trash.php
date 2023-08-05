@@ -47,7 +47,7 @@ class Trash extends Model
     /**
      * delete trashed model and associated model.
      */
-    public function deleteFromTrash(): bool|null
+    public function deleteFromTrash(): ?bool
     {
         return $this->delete();
     }
@@ -68,7 +68,7 @@ class Trash extends Model
     public function prunable(): Builder
     {
         return static::where('created_at', '<=', config('trash.pruning_period'))
-            ->when(!config('trash.pruning_status'), function ($when) {
+            ->when(! config('trash.pruning_status'), function ($when) {
                 $when->whereNull('id');
             });
     }
