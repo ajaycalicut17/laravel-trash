@@ -151,6 +151,18 @@ To delete all trashed model and associated model:
 Trash::emptyTrash();
 ```
 
+To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class:
+
+```diff
+/**
+ * Define the application's command schedule.
+ */
+protected function schedule(Schedule $schedule): void
+{
++    $schedule->command('model:prune')->daily();
+}
+```
+
 ### Testing
 
 ```bash
