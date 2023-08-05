@@ -18,7 +18,7 @@ class TrashTest extends TestCase
         $this->assertDatabaseHas('trashes', [
             'trashable_type' => User::class,
             'trashable_id' => $user->id,
-            'name' => User::trashName($user),
+            'name' => User::trashName($user)
         ]);
     }
 
