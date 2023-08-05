@@ -9,6 +9,13 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     use RefreshDatabase;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutMockingConsoleOutput();
+    }
+
     protected function getPackageProviders($app)
     {
         return [
