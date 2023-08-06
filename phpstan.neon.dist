@@ -4,4 +4,3 @@ parameters:
 		- config
 		- database
 		- src
-		- tests

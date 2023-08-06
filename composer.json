@@ -20,6 +20,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^2.12",
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^10.3.0"
     },
@@ -34,11 +35,14 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage-html coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
