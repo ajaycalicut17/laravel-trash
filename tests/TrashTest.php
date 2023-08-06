@@ -4,7 +4,6 @@ uses(\Ajaycalicut17\LaravelTrash\Tests\TestCase::class);
 use Ajaycalicut17\LaravelTrash\Models\Trash;
 use Ajaycalicut17\LaravelTrash\Tests\Models\User;
 
-
 test('verify that the deleted model is trashed', function () {
     $user = User::factory()->create();
 
