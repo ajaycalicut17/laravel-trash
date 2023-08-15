@@ -3,7 +3,6 @@
 uses(\Ajaycalicut17\LaravelTrash\Tests\TestCase::class);
 use Ajaycalicut17\LaravelTrash\Models\Trash;
 use Ajaycalicut17\LaravelTrash\Tests\Models\User;
-
 use function Pest\Laravel\artisan;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseEmpty;
