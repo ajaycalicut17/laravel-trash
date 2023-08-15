@@ -1,5 +1,5 @@
 parameters:
-	level: 1
+	level: 2
 	paths:
 		- config
 		- database
@@ -7,3 +7,7 @@ parameters:
 	ignoreErrors:
 		- "#^Call to an undefined static method static.*:\\:cursor\\(\\)\\.$#"
 		- "#^Call to an undefined static method static.*:\\:where\\(\\)\\.$#"
+		- "#^Call to an undefined method .*:\\:trashable\\(\\)\\.$#"
+		- "#^Call to an undefined method .*:\\:trash\\(\\)\\.$#"
+		- "#^Call to an undefined static method .*:\\:trashName\\(\\)\\.$#"
+		- "#^Call to an undefined method .*:\\:withTrashed\\(\\)\\.$#"
