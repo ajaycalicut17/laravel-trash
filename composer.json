@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
-        "pestphp/pest": "^2.12",
+        "pestphp/pest-plugin-laravel": "^2.1",
         "phpstan/phpstan": "^1.10"
     },
     "autoload": {

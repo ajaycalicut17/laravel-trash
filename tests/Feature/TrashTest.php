@@ -4,14 +4,22 @@ uses(\Ajaycalicut17\LaravelTrash\Tests\TestCase::class);
 use Ajaycalicut17\LaravelTrash\Models\Trash;
 use Ajaycalicut17\LaravelTrash\Tests\Models\User;
 
+use function Pest\Laravel\artisan;
+use function Pest\Laravel\assertDatabaseCount;
+use function Pest\Laravel\assertDatabaseEmpty;
+use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertModelMissing;
+use function Pest\Laravel\assertNotSoftDeleted;
+use function Pest\Laravel\assertSoftDeleted;
+
 test('verify that the deleted model is trashed', function () {
     $user = User::factory()->create();
 
     $user->delete();
 
-    $this->assertSoftDeleted($user);
+    assertSoftDeleted($user);
 
-    $this->assertDatabaseHas('trashes', [
+    assertDatabaseHas('trashes', [
         'trashable_type' => User::class,
         'trashable_id' => $user->id,
         'name' => User::trashName($user),
@@ -30,9 +38,9 @@ test('check if the corresponding model has been restored from the trash', functi
 
     $trash->restoreFromTrash();
 
-    $this->assertModelMissing($trash);
+    assertModelMissing($trash);
 
-    $this->assertNotSoftDeleted($user);
+    assertNotSoftDeleted($user);
 });
 
 test('check if the model has been deleted from the trash', function () {
@@ -47,15 +55,15 @@ test('check if the model has been deleted from the trash', function () {
 
     $trash->deleteFromTrash();
 
-    $this->assertModelMissing($trash);
+    assertModelMissing($trash);
 
-    $this->assertModelMissing($user);
+    assertModelMissing($user);
 });
 
 test('verify that all models have been deleted from the trash', function () {
-    $this->assertDatabaseEmpty('trashes');
+    assertDatabaseEmpty('trashes');
 
-    $this->assertDatabaseEmpty('users');
+    assertDatabaseEmpty('users');
 
     $users = User::factory(10)->create();
 
@@ -63,19 +71,19 @@ test('verify that all models have been deleted from the trash', function () {
         $user->delete();
     });
 
-    $this->assertDatabaseCount('trashes', 10);
+    assertDatabaseCount('trashes', 10);
 
     Trash::emptyTrash();
 
-    $this->assertDatabaseEmpty('trashes');
+    assertDatabaseEmpty('trashes');
 
-    $this->assertDatabaseEmpty('users');
+    assertDatabaseEmpty('users');
 });
 
 test('check if the models are pruned', function () {
-    $this->assertDatabaseEmpty('trashes');
+    assertDatabaseEmpty('trashes');
 
-    $this->assertDatabaseEmpty('users');
+    assertDatabaseEmpty('users');
 
     $users = User::factory(10)->create([
         'deleted_at' => now(),
@@ -92,25 +100,25 @@ test('check if the models are pruned', function () {
 
     Trash::insert($trashes);
 
-    $this->assertDatabaseCount('trashes', 10);
+    assertDatabaseCount('trashes', 10);
 
     config(['trash.pruning_status' => true]);
 
-    $result = $this->artisan('model:prune', [
+    $result = artisan('model:prune', [
         '--model' => Trash::class,
     ]);
 
     expect($result === 0)->toBeTrue();
 
-    $this->assertDatabaseEmpty('trashes');
+    assertDatabaseEmpty('trashes');
 
-    $this->assertDatabaseEmpty('users');
+    assertDatabaseEmpty('users');
 });
 
 test('verify that models are not pruned if pruning status is disabled', function () {
-    $this->assertDatabaseEmpty('trashes');
+    assertDatabaseEmpty('trashes');
 
-    $this->assertDatabaseEmpty('users');
+    assertDatabaseEmpty('users');
 
     $users = User::factory(10)->create([
         'deleted_at' => now(),
@@ -127,15 +135,15 @@ test('verify that models are not pruned if pruning status is disabled', function
 
     Trash::insert($trashes);
 
-    $this->assertDatabaseCount('trashes', 10);
+    assertDatabaseCount('trashes', 10);
 
-    $result = $this->artisan('model:prune', [
+    $result = artisan('model:prune', [
         '--model' => Trash::class,
     ]);
 
     expect($result === 0)->toBeTrue();
 
-    $this->assertDatabaseCount('trashes', 10);
+    assertDatabaseCount('trashes', 10);
 
-    $this->assertDatabaseCount('users', 10);
+    assertDatabaseCount('users', 10);
 });
