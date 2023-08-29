@@ -21,6 +21,8 @@ class Trash extends Model
 
     /**
      * The event map for the model.
+     *
+     * @var array
      */
     protected $dispatchesEvents = [
         'deleted' => DeleteFromTrash::class,
