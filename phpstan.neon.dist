@@ -1,5 +1,5 @@
 parameters:
-	level: 2
+	level: 6
 	paths:
 		- config
 		- database
@@ -11,3 +11,6 @@ parameters:
 		- "#^Call to an undefined method .*:\\:trash\\(\\)\\.$#"
 		- "#^Call to an undefined static method .*:\\:trashName\\(\\)\\.$#"
 		- "#^Call to an undefined method .*:\\:withTrashed\\(\\)\\.$#"
+		- "#^Property .*:\\:\\$dispatchesEvents type has no value type specified in iterable type array\\.$#"
+	checkGenericClassInNonGenericObjectType: false
+	
