@@ -13,4 +13,5 @@ parameters:
 		- "#^Call to an undefined method .*:\\:withTrashed\\(\\)\\.$#"
 		- "#^Property .*:\\:\\$dispatchesEvents type has no value type specified in iterable type array\\.$#"
 	checkGenericClassInNonGenericObjectType: false
+	reportUnmatchedIgnoredErrors: false
 	
