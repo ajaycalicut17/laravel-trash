@@ -11,7 +11,7 @@ use function Pest\Laravel\assertModelMissing;
 use function Pest\Laravel\assertNotSoftDeleted;
 use function Pest\Laravel\assertSoftDeleted;
 
-test('verify that the deleted model is trashed', function () {
+test('verify that the deleted model is trashed Test', function () {
     $user = User::factory()->create();
 
     $user->delete();
