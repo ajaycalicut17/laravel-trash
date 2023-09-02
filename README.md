@@ -1,6 +1,6 @@
 # Laravel Trash 🗑️
 
-[![GitHub Actions](https://github.com/ajaycalicut17/laravel-trash/actions/workflows/run-tests.yml/badge.svg)](https://github.com/ajaycalicut17/laravel-trash/actions)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/ajaycalicut17/laravel-trash/run-tests.yml?branch=main&label=tests)](https://github.com/ajaycalicut17/laravel-trash/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 [![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 [![License](https://img.shields.io/packagist/l/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
