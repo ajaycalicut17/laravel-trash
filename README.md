@@ -174,7 +174,7 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing ✴️
+## Contributing 🤝
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
