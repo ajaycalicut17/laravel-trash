@@ -1,28 +1,27 @@
-# Laravel Trash
+# Laravel Trash 🗑️
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/ajaycalicut17/laravel-trash.svg?style=flat-square)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
-[![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash.svg?style=flat-square)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
-![GitHub Actions](https://github.com/ajaycalicut17/laravel-trash/actions/workflows/main.yml/badge.svg)
+[![GitHub Actions](https://github.com/ajaycalicut17/laravel-trash/actions/workflows/run-tests.yml/badge.svg)](https://github.com/ajaycalicut17/laravel-trash/actions)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
+[![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
+[![License](https://img.shields.io/packagist/l/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 
 This package is used to handle soft deletes. This is done using Laravel "soft delete" functionality.
 
-## Installation
+## Installation ⚙️
 
-You can install the package via composer:
+- You can install the package via composer:
 
 ```bash
 composer require ajaycalicut17/laravel-trash
 ```
 
-## Usage
-
-Run migrations to create tables for this package:
+- Run migrations to create tables for this package:
 
 ```php
 php artisan migrate
 ```
 
-Check model is "soft delete" able, this package work by using laravel "soft delete" functionality:
+- Check model is "soft delete" able, this package work by using laravel "soft delete" functionality:
 
 ```diff
 <?php
@@ -38,7 +37,7 @@ class User extends Authenticatable
 }
 ```
 
-To enable this package for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the Eloquent model:
+- To enable this package for a model, add the Ajaycalicut17\LaravelTrash\Traits\Trashable trait to the Eloquent model:
 
 ```diff
 <?php
@@ -55,7 +54,7 @@ class User extends Authenticatable
 }
 ```
 
-To start listening "trashed" model event, define a $dispatchesEvents property on your Eloquent model:
+- To start listening "trashed" model event, define a $dispatchesEvents property on your Eloquent model:
 
 ```diff
 <?php
@@ -82,7 +81,19 @@ class User extends Authenticatable
 }
 ```
 
-To override the trash name (Optional):
+- To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class (Optional):
+
+```diff
+/**
+ * Define the application's command schedule.
+ */
+protected function schedule(Schedule $schedule): void
+{
++    $schedule->command('model:prune')->daily();
+}
+```
+
+- To override the trash name (Optional):
 
 ```diff
 <?php
@@ -115,73 +126,63 @@ class User extends Authenticatable
 }
 ```
 
-Publishing the config file (Optional):
+- Publishing the config file (Optional):
 
 ```php
 php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
 ```
 
-To get all trash model data:
+## Usage 🔨
+
+- To get all trash model data:
 
 ```php
 Trash::all();
 ```
 
-To get all trash model and associated model data:
+- To get all trash model and associated model data:
 
 ```php
 Trash::with('trashable')->get();
 ```
 
-To restore associated model form trash:
+- To restore associated model form trash:
 
 ```php
 Trash::first()->restoreFromTrash();
 ```
 
-To delete trashed model and associated model:
+- To delete trashed model and associated model:
 
 ```php
 Trash::first()->deleteFromTrash();
 ```
 
-To delete all trashed model and associated model:
+- To delete all trashed model and associated model:
 
 ```php
 Trash::emptyTrash();
 ```
 
-To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class:
-
-```diff
-/**
- * Define the application's command schedule.
- */
-protected function schedule(Schedule $schedule): void
-{
-+    $schedule->command('model:prune')->daily();
-}
-```
-
-### Testing
+## Testing 🧪
 
 ```bash
 composer test
 ```
 
-### Changelog
+## Changelog 🚀
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-## Contributing
+## Contributing ✴️
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Credits
+## Credits ©️
 
 -   [Ajay A](https://github.com/ajaycalicut17)
 -   [All Contributors](../../contributors)
 
-## License
+## License 📃
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
