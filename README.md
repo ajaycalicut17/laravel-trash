@@ -121,7 +121,7 @@ class User extends Authenticatable
 +
 +    public static function trashName(Model $model): string
 +    {
-+        return static::class . ' ' . $model->id;
++        return static::class.' '.$model->id;
 +    }
 }
 ```
@@ -178,7 +178,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Credits ©️
+## Credits 🔥
 
 -   [Ajay A](https://github.com/ajaycalicut17)
 -   [All Contributors](../../contributors)
