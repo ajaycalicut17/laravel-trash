@@ -69,8 +69,8 @@ class Trash extends Model
      */
     public function prunable(): Builder
     {
-        return static::where('created_at', '<=', config('trash.pruning_period'))
-            ->when(! config('trash.pruning_status'), function ($when) {
+        return static::where('created_at', '<=', config('trash.pruning.period'))
+            ->when(! config('trash.pruning.status'), function ($when) {
                 $when->whereNull('id');
             });
     }

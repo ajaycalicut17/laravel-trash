@@ -94,15 +94,15 @@ test('check if the models are pruned', function () {
         $trashes[$key]['trashable_type'] = $user::class;
         $trashes[$key]['trashable_id'] = $user->id;
         $trashes[$key]['name'] = User::trashName($user);
-        $trashes[$key]['created_at'] = config('trash.pruning_period');
-        $trashes[$key]['updated_at'] = config('trash.pruning_period');
+        $trashes[$key]['created_at'] = config('trash.pruning.period');
+        $trashes[$key]['updated_at'] = config('trash.pruning.period');
     });
 
     Trash::insert($trashes);
 
     assertDatabaseCount('trashes', 10);
 
-    config(['trash.pruning_status' => true]);
+    config(['trash.pruning.status' => true]);
 
     $result = artisan('model:prune', [
         '--model' => Trash::class,
@@ -129,8 +129,8 @@ test('verify that models are not pruned if pruning status is disabled', function
         $trashes[$key]['trashable_type'] = $user::class;
         $trashes[$key]['trashable_id'] = $user->id;
         $trashes[$key]['name'] = User::trashName($user);
-        $trashes[$key]['created_at'] = config('trash.pruning_period');
-        $trashes[$key]['updated_at'] = config('trash.pruning_period');
+        $trashes[$key]['created_at'] = config('trash.pruning.period');
+        $trashes[$key]['updated_at'] = config('trash.pruning.period');
     });
 
     Trash::insert($trashes);

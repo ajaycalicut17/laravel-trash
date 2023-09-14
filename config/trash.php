@@ -11,6 +11,8 @@ return [
     |
     */
 
-    'pruning_status' => false,
-    'pruning_period' => now()->subMonth(),
+    'pruning' => [
+        'status' => false,
+        'period' => now()->subMonth(),
+    ],
 ];
