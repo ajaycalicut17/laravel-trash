@@ -5,7 +5,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 [![License](https://img.shields.io/packagist/l/ajaycalicut17/laravel-trash)](https://packagist.org/packages/ajaycalicut17/laravel-trash)
 
-This package is used to handle soft deletes. This is done using Laravel "soft delete" functionality.
+The Laravel "soft delete" functionality is effectively managed through the use of this package. It works like trash in your system.
 
 ## Installation ⚙️
 
