@@ -1,9 +1,16 @@
 {
     "name": "ajaycalicut17/laravel-trash",
-    "description": "A Laravel package to manage soft deletes.",
+    "description": "Laravel package to manage soft delete.",
     "keywords": [
         "ajaycalicut17",
-        "laravel-trash"
+        "laravel-trash",
+        "laravel",
+        "soft-delete",
+        "eloquent",
+        "model",
+        "trash",
+        "delete",
+        "restore"
     ],
     "homepage": "https://github.com/ajaycalicut17/laravel-trash",
     "license": "MIT",
@@ -49,5 +56,7 @@
                 "Ajaycalicut17\\LaravelTrash\\LaravelTrashServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
