@@ -81,15 +81,19 @@ class User extends Authenticatable
 }
 ```
 
-- To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class (Optional):
+- To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class and change the config\trash.php pruning status to "true". You can also enter your pruning period here. (Optional):
 
 ```diff
++ use Ajaycalicut17\LaravelTrash\Models\Trash;
+
 /**
  * Define the application's command schedule.
  */
 protected function schedule(Schedule $schedule): void
 {
-+    $schedule->command('model:prune')->daily();
++    $schedule->command('model:prune', [
++        '--model' => Trash::class,
++    ])->daily();
 }
 ```
 
