@@ -120,7 +120,7 @@ class User extends Authenticatable
 php artisan vendor:publish --provider="Ajaycalicut17\LaravelTrash\LaravelTrashServiceProvider" --tag="config"
 ```
 
-- To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class and change the config\trash.php pruning status to "true". You can also enter your pruning period here. (Optional):
+- To periodically delete the model from the trash, add model:prune Artisan command in your application's App\Console\Kernel class and change the config\trash.php pruning status to "true", you can also enter your pruning period here. (Optional):
 
 ```diff
 + use Ajaycalicut17\LaravelTrash\Models\Trash;
