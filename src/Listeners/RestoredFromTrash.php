@@ -17,8 +17,8 @@ class RestoredFromTrash
     /**
      * Handle the event.
      */
-    public function handle(RestoreFromTrash $restoreFromTrash): void
+    public function handle(RestoreFromTrash $event): void
     {
-        $restoreFromTrash->model->trashable()->restore();
+        $event->model->trashable()->restore();
     }
 }
