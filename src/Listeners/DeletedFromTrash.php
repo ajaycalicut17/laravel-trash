@@ -14,8 +14,11 @@ class DeletedFromTrash
         //
     }
 
-    public function handle(DeleteFromTrash $event): void
+    /**
+     * Handle the event.
+     */
+    public function handle(DeleteFromTrash $deleteFromTrash): void
     {
-        $event->model->trashable()->forceDelete();
+        $deleteFromTrash->model->trashable()->forceDelete();
     }
 }

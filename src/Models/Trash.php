@@ -35,9 +35,9 @@ class Trash extends Model
     }
 
     /**
-     * Restore the associated model from the trash.
+     * restore associated model form trash.
      */
-    public function restoreFromTrash(): self
+    public function restoreFromTrash(): Trash
     {
         $this->deleteQuietly();
 
@@ -55,11 +55,13 @@ class Trash extends Model
     }
 
     /**
-     * Delete all trashed models and their associated models.
+     * delete all trashed model and associated model.
      */
-    public static function emptyTrash(): void
+    public static function emptyTrash(): LazyCollection
     {
-        static::cursor()->each(fn (Trash $trash) => $trash->delete());
+        return static::cursor()->each(function ($each) {
+            $each->delete();
+        });
     }
 
     /**
