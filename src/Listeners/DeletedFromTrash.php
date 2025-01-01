@@ -12,6 +12,7 @@ class DeletedFromTrash
     public function __construct()
     {
         //
+        $r = 0;
     }
 
     public function handle(DeleteFromTrash $event): void
