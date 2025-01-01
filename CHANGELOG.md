@@ -2,6 +2,29 @@
 
 All notable changes to `laravel-trash` will be documented in this file
 
+## v1.0.3 - 2025-01-01
+
+### What's Changed
+
+* Update Changelog by @github-actions in https://github.com/ajaycalicut17/laravel-trash/pull/25
+* Bump peter-evans/create-pull-request from 7.0.3 to 7.0.5 by @dependabot in https://github.com/ajaycalicut17/laravel-trash/pull/26
+* Fix by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/28
+* Fix by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/30
+* Fix by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/32
+* Fix by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/34
+* Update phpstan.yml (#36) by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/37
+* Update fix-php-code-style-issues.yml (#39) by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/40
+* Update fix-php-code-style-issues.yml by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/42
+* Update run-tests.yml by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/44
+* Update phpstan.yml by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/46
+* Create phpmd.yml by @ajaycalicut17 in https://github.com/ajaycalicut17/laravel-trash/pull/47
+
+### New Contributors
+
+* @github-actions made their first contribution in https://github.com/ajaycalicut17/laravel-trash/pull/25
+
+**Full Changelog**: https://github.com/ajaycalicut17/laravel-trash/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2024-09-21
 
 ### What's Changed
