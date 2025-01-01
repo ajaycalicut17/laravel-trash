@@ -21,8 +21,6 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
-  schedule:
-    - cron: '42 8 * * 5'
 
 permissions:
   contents: read
@@ -47,7 +45,7 @@ jobs:
           tools: phpmd
 
       - name: Run PHPMD
-        run: phpmd . sarif cleancode,codesize,controversial,design,naming,unusedcode --reportfile phpmd-results.sarif
+        run: phpmd . sarif phpmd-ruleset.xml --reportfile phpmd-results.sarif
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
